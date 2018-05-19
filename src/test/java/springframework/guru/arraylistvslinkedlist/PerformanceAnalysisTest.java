@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class PerformanceAnalysisTest {
@@ -58,7 +59,7 @@ public class PerformanceAnalysisTest {
             String getName() { return "LinkedList add all"; }
 
             @Override
-            void setup() { testList = new ArrayList<>(); }
+            void setup() { testList = new LinkedList<>(); }
 
             @Override
             void runMethod() { testList.addAll(stringList); }
@@ -89,7 +90,7 @@ public class PerformanceAnalysisTest {
             String getName() { return "LinkedList add"; }
 
             @Override
-            void setup() { testList = new ArrayList<>(); }
+            void setup() { testList = new LinkedList<>(); }
 
             @Override
             void runMethod() {
@@ -111,7 +112,7 @@ public class PerformanceAnalysisTest {
 
             @Override
             void setup() {
-                testList = new ArrayList<>(max);
+                testList = new ArrayList<String>(max);
                 testList.addAll(stringList);
             }
 
@@ -132,7 +133,7 @@ public class PerformanceAnalysisTest {
 
             @Override
             void setup() {
-                testList = new ArrayList<>(max);
+                testList = new LinkedList<String>();
                 testList.addAll(stringList);
             }
 
@@ -177,7 +178,7 @@ public class PerformanceAnalysisTest {
 
             @Override
             void setup() {
-                testList = new ArrayList<>(max);
+                testList = new LinkedList<String>();
                 testList.addAll(stringList);
             }
 
