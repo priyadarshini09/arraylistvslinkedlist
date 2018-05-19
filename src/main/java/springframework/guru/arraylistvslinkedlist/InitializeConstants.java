@@ -1,6 +1,6 @@
 package springframework.guru.arraylistvslinkedlist;
 
-public class InitializeContants {
+public class InitializeConstants {
     static final int MAX_ELEMENTS = 5;
     String[] strings = maxArray();
 

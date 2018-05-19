@@ -4,15 +4,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class PerformanceAnalysisTest {
 
     private List<String> testList;
-    private InitializeContants initializeContants;
+    private InitializeConstants initializeConstants;
     private List<String> stringList;
     String find1;
     String find2;
@@ -20,17 +17,17 @@ public class PerformanceAnalysisTest {
 
     @Before
     public void set() {
-        initializeContants = new InitializeContants();
-        String[] strings = initializeContants.strings;
+        initializeConstants = new InitializeConstants();
+        String[] strings = initializeConstants.strings;
         stringList = Arrays.asList(strings);
-        max = initializeContants.MAX_ELEMENTS;
-        find1 = initializeContants.getString(true, max/2 + 10);
-        find2 = initializeContants.getString(true, max/2 +20);
+        max = initializeConstants.MAX_ELEMENTS;
+        find1 = initializeConstants.getString(true, max/2 + 10);
+        find2 = initializeConstants.getString(true, max/2 +20);
     }
 
     @After
     public void tearDown() {
-        initializeContants = null;
+        initializeConstants = null;
         stringList = null;
         find1 = null;
         find2 = null;
@@ -119,8 +116,12 @@ public class PerformanceAnalysisTest {
             @Override
             void runMethod() {
                 List<String> removedList = testList;
-                removedList.remove(find1);
-                removedList.remove(find2);
+                Iterator iterator = removedList.iterator();
+                while(iterator.hasNext()) {
+                    if(find1.equals(iterator.next())) {
+                        iterator.remove();
+                    }
+                }
             }
         };
         findAndRemoveInArrayList.doPerformanceTest();
@@ -140,8 +141,12 @@ public class PerformanceAnalysisTest {
             @Override
             void runMethod() {
                 List<String> removedList = testList;
-                removedList.remove(find1);
-                removedList.remove(find2);
+                Iterator iterator = removedList.iterator();
+                while(iterator.hasNext()) {
+                    if(find1.equals(iterator.next())) {
+                        iterator.remove();
+                    }
+                }
             }
         };
         findAndRemoveInLinkedList.doPerformanceTest();
